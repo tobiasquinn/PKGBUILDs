@@ -1,0 +1,19 @@
+# Contributor: Tobias Quinn <tobias@tobiasquinn.com>
+
+pkgname=priscasms
+pkgver=0.02
+pkgrel=1
+pkgdesc="QT GUI to send SMS using gammu"
+arch=(any)
+url="http://tobiasquinn.com/priscasms"
+license=('GPL3')
+depends=('python-qt')
+makedepends=('python-qt')
+source=(http://tobiasquinn.com/code/src/$pkgname-$pkgver.tar.gz)
+md5sums=('4c1c9eb91562182b2927eb93b87934ab')
+
+build() {
+    cd $srcdir/$pkgname-$pkgver
+    python setup.py install --root=$pkgdir/ --optimize=1
+}
+
