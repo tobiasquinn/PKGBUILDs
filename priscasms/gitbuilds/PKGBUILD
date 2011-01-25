@@ -2,30 +2,34 @@
 
 pkgname=priscasms-git
 pkgrel=1
-pkgver=20110121
+pkgver=20110125
 pkgdesc="QT GUI to send SMS using gammu"
 arch=(any)
 url="http://tobiasquinn.com/priscasms"
 license=('GPL3')
-depends=('python2-qt')
+depends=('python2-qt' 'python-paramiko')
 makedepends=('python2-qt')
 conflicts=('priscasms')
 provides=('priscasms')
 _gitroot=('git://github.com/tobiasquinn/priscasms.git')
 _gitname=('priscasms')
+_gitbranch=('devel')
+source=('arch-python2.patch')
+md5sums=('751c17869364dba2de7d4580950b6a71')
 
 build() {
-    cd $(srcdir)
+    cd ${srcdir}
     # Git checkout
     if [ -d $_gitname ]; then
         cd $_gitname
-        git checkout origin/python2
+        git checkout $_gitbranch
     else
         git clone $_gitroot
-        git checkout origin/python2
         cd $_gitname
+        git checkout $_gitbranch
     fi
     msg 'GIT checkout done or server timeout'
+    patch -Np1 -i "${srcdir}/arch-python2.patch"
     msg 'Starting make...'
 
     python2 setup.py install --root=$pkgdir/ --optimize=1

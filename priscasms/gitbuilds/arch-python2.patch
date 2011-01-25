@@ -1,0 +1,10 @@
+diff --git a/priscasms.py b/priscasms.py
+index 633fdc1..c28e49d 100755
+--- a/priscasms.py
++++ b/priscasms.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # PriscaSMS (c) Tobias Quinn, <tobias@tobiasquinn.com>, GPLv3
+ 
