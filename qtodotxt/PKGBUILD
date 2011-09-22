@@ -3,7 +3,7 @@
 pkgname=qtodotxt-hg
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="QTodoTxt - UI for todo.txt file (see todotxt.com)"
+pkgdesc="QTodoTxt - UI for lifehacker.com's todo.txt files (see todotxt.com)"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/3david/qtodotxt"
 license=('GPL3')
