@@ -1,0 +1,32 @@
+# Maintainer: Tobias Quinn <tobias@tobiasquinn.com>
+
+pkgname=qtodotxt-hg
+pkgver=1
+pkgrel=1
+pkgdesc="QTodoTxt - UI for todo.txt file (see todotxt.com)"
+arch=('i686' 'x86_64')
+url="https://bitbucket.org/3david/qtodotxt"
+license=('GPL3')
+depends=('pyside')
+makedepends=('mercurial')
+provides=('qtodotxt')
+md5sums=('4c5dc464b57c997c25dbf40c652a1776')
+
+_hgroot="https://bitbucket.org/3david/"
+_hgname="qtodotxt"
+
+build() {
+  cd "$srcdir"
+  hg clone $_hgroot$_hgname
+  
+  msg "Mercurial checkout done or server timeout"
+
+  # install bin
+  install -D -m755 "${startdir}/qtodotxt" "${pkgdir}/usr/bin/qtodotxt" || return 1
+
+  cd "$srcdir/$_hgname"
+  # remove the py2exe lines
+  sed -i "s/import py2exe//g" setup.py
+  sed -i "s/sys.path.append.*//g" setup.py
+  python2 setup.py install --root=$pkgdir/ || return 1
+}
