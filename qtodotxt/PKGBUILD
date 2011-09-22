@@ -12,8 +12,10 @@ makedepends=('mercurial')
 optdepends=('todotxt: command line todo.txt')
 provides=('qtodotxt')
 install=$pkgname.install
-source=(qtodotxt.png)
-md5sums=('6a97ac80190f9490c08c567795758901')
+source=(qtodotxt.png
+qtodotxt.sh)
+md5sums=('6a97ac80190f9490c08c567795758901'
+'ef08beb105c0f3c8d3cbbbabb30dd571')
 
 _hgroot="https://bitbucket.org/3david/"
 _hgname="qtodotxt"
@@ -25,7 +27,7 @@ build() {
   msg "Mercurial checkout done or server timeout"
 
   # install bin
-  install -D -m755 "${startdir}/qtodotxt" "${pkgdir}/usr/bin/qtodotxt" || return 1
+  install -D -m755 "${startdir}/qtodotxt.sh" "${pkgdir}/usr/bin/qtodotxt" || return 1
 
   cd "$srcdir/$_hgname"
   # remove the py2exe lines
