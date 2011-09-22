@@ -12,7 +12,8 @@ makedepends=('mercurial')
 optdepends=('todotxt: command line todo.txt')
 provides=('qtodotxt')
 install=$pkgname.install
-md5sums=('4c5dc464b57c997c25dbf40c652a1776')
+source=(qtodotxt.png)
+md5sums=('6a97ac80190f9490c08c567795758901')
 
 _hgroot="https://bitbucket.org/3david/"
 _hgname="qtodotxt"
