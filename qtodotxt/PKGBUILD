@@ -2,7 +2,7 @@
 
 pkgname=qtodotxt-hg
 pkgver=0.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="QTodoTxt - UI for lifehacker.com's todo.txt files (see todotxt.com)"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/3david/qtodotxt"
@@ -13,16 +13,18 @@ optdepends=('todotxt: command line todo.txt')
 provides=('qtodotxt')
 install=$pkgname.install
 source=(qtodotxt.png
-qtodotxt.sh)
+qtodotxt.sh
+qtodotxt.desktop)
 md5sums=('6a97ac80190f9490c08c567795758901'
-'ef08beb105c0f3c8d3cbbbabb30dd571')
+'ef08beb105c0f3c8d3cbbbabb30dd571'
+'aa3efc9f4c62a6e5c1f8d84a801604f2')
 
 _hgroot="https://bitbucket.org/3david/"
 _hgname="qtodotxt"
 
 build() {
   cd "$srcdir"
-  hg clone $_hgroot$_hgname
+  hg clone -r 1f847d0d3ddb $_hgroot$_hgname
   
   msg "Mercurial checkout done or server timeout"
 
